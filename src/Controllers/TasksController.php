@@ -26,7 +26,7 @@ class TasksController extends Controller
                 'description' => $_POST["description"], 
             ];
             $taskModel = new TaskModel;
-            $taskModel->setTaskModel($args);
+            $taskModel->setTaskModelCreate($args);
             
             if ($this->taskResponsitory->add($taskModel)) {
                 header("Location: " . WEBROOT);
@@ -41,7 +41,8 @@ class TasksController extends Controller
     function edit($id)
     {
         
-        $d['task'] = $this->taskResponsitory->get($id);
+        $a = $this->taskResponsitory->get($id);
+        $d['task'] = $a;
         $this->set($d);
         $this->render("edit");
         if (isset($_POST["title"]))
@@ -49,10 +50,11 @@ class TasksController extends Controller
             $args = [
                 'id' => $id,
                 'title' => $_POST["title"], 
-                'description' => $_POST["description"], 
+                'description' => $_POST["description"],
+                'created_at' => $a->getCreated_at() 
             ];
             $taskModel = new TaskModel;
-            $taskModel->setTaskModel($args);
+            $taskModel->setTaskModelUpdate($args);
 
             if ($this->taskResponsitory->edit($taskModel))
             {
