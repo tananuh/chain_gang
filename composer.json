@@ -1,0 +1,17 @@
+{
+    "name": "hoang/chain_gang",
+    "description": "xe dap",
+    "authors": [
+        {
+            "name": "TuanHoang",
+            "email": "hoanganhtuanpro96@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "chain_gang\\": "src/"
+        }
+    }
+}
