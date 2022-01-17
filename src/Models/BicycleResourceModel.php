@@ -1,6 +1,6 @@
 <?php
-namespace chain_gang\Models;
-use chain_gang\Models\BicycleModel;
+namespace chain_gang\Models\Bicycle;
+use chain_gang\Models\Bicycle\BicycleModel;
 use chain_gang\Core\ResourceModel;
 class BicycleResourceModel extends ResourceModel
 {

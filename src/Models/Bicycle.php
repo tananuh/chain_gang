@@ -1,5 +1,5 @@
 <?php
-namespace chain_gang\Models;
+namespace chain_gang\Models\Bicycle;
 class Bicycle extends \chain_gang\Core\Model
 {
     protected $id;

@@ -1,6 +1,6 @@
 <?php
-namespace chain_gang\Models;
-use chain_gang\Models\BicycleResourceModel;
+namespace chain_gang\Models\Bicycle;
+use chain_gang\Models\Bicycle\BicycleResourceModel;
 class BicycleResponsitory
 {
     private $bicycleResourceModel;
@@ -10,12 +10,10 @@ class BicycleResponsitory
 
     function getAll()
     {
-        $d['show'] = $this->bicycleResourceModel->getall();
-        return $d;
+        return $this->bicycleResourceModel->getall();;
     }
     function get($id) {
-        $d['show'] = $this->bicycleResourceModel->get($id);
-        return $d;
+        return $this->bicycleResourceModel->get($id);
     }
     function add($model)
     {            

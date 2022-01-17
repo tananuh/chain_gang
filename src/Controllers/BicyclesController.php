@@ -1,8 +1,8 @@
 <?php
 namespace chain_gang\Controllers;
 use chain_gang\Core\Controller;
-use chain_gang\Models\BicycleResponsitory;
-use chain_gang\Models\Bicycle;
+use chain_gang\Models\Bicycle\BicycleResponsitory;
+use chain_gang\Models\Bicycle\Bicycle;
 class BicyclesController extends Controller
 {
     private $bicycleResponsitory;
@@ -11,7 +11,8 @@ class BicyclesController extends Controller
     }
     function index()
     {
-        $this->set($this->bicycleResponsitory->getAll());
+        $d['show'] = $this->bicycleResponsitory->getAll();
+        $this->set($d);
         $this->render("index");
     }
 
@@ -48,7 +49,8 @@ class BicyclesController extends Controller
     function edit($id)
     {
         
-        $this->set($this->bicycleResponsitory->get($id));
+        $d['show'] = $this->bicycleResponsitory->get($id);
+        $this->set($d);
         $this->render("edit");
         if (isset($_POST["brand"]))
         {
