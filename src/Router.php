@@ -9,12 +9,14 @@ class Router
 
         if ($url == "/chain_gang/")
         {
-            $request->controller = "Bicycles";
+            $request->controller = ['tasks', 'bicycles'];
+            $request->check = true;
             $request->action = "index";
             $request->params = [];
         }
         else
         {
+            $request->check = false;
             $explode_url = explode('/', $url);
             $explode_url = array_slice($explode_url, 2);
             $request->controller = $explode_url[0];

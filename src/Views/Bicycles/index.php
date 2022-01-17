@@ -17,19 +17,19 @@
         </tr>
         </thead>
         <?php
-        foreach ($show as $Bicycle)
+        foreach ($show as $bicycle)
         {
             echo '<tr>';
-            echo "<td>" . $Bicycle->getBrand() . "</td>";
-            echo "<td>" . $Bicycle->getModel() . "</td>";
-            echo "<td>" . $Bicycle->getYear() . "</td>";
-            echo "<td>" . $Bicycle->getCategory() . "</td>";
-            echo "<td>" . $Bicycle->getStringGender() . "</td>";
-            echo "<td>" . $Bicycle->getColor() . "</td>";
-            echo "<td>" . $Bicycle->getWeightShow() . "</td>";
-            echo "<td>" . $Bicycle->getStringCondition() . "</td>";
-            echo "<td>" . $Bicycle->getPriceShow() . "</td>";
-            echo "<td class='text-center'><a class='btn btn-info btn-xs' href='Bicycles/edit/" . $Bicycle->getId() . "' ><span class='glyphicon glyphicon-edit'></span> Edit</a> <a href='Bicycles/delete/" . $Bicycle->getId() . "' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>";
+            echo "<td>" . $bicycle->getBrand() . "</td>";
+            echo "<td>" . $bicycle->getModel() . "</td>";
+            echo "<td>" . $bicycle->getYear() . "</td>";
+            echo "<td>" . $bicycle->getCategory() . "</td>";
+            echo "<td>" . $bicycle->getStringGender() . "</td>";
+            echo "<td>" . $bicycle->getColor() . "</td>";
+            echo "<td>" . $bicycle->getWeightShow() . "</td>";
+            echo "<td>" . $bicycle->getStringCondition() . "</td>";
+            echo "<td>" . $bicycle->getPriceShow() . "</td>";
+            echo "<td class='text-center'><a class='btn btn-info btn-xs' href='Bicycles/edit/" . $bicycle->getId() . "' ><span class='glyphicon glyphicon-edit'></span> Edit</a> <a href='Bicycles/delete/" . $bicycle->getId() . "' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>";
             echo "</tr>";
         }
         ?>

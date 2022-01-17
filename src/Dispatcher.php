@@ -10,17 +10,22 @@ class Dispatcher
         $this->request = new Request();
         
         Router::parse($this->request->url, $this->request);
+        if($this->request->check){
+            foreach($this->request->controller as $value){
+                $controller = $this->loadController($value);
+                call_user_func_array([$controller, $this->request->action], $this->request->params);
+            }  
+        }else {
+            $controller = $this->loadController($this->request->controller);
+            call_user_func_array([$controller, $this->request->action], $this->request->params);
+        }
         
-        $controller = $this->loadController();
-
-        call_user_func_array([$controller, $this->request->action], $this->request->params);
+        
     }
 
-    public function loadController()
+    public function loadController($controllerName)
     {
-        $name = $this->request->controller . "Controller";
-        // $file = ROOT . 'src/Core/' . $name . '.php';
-        // require($file);
+        $name = $controllerName . "Controller";
         $name = ucfirst($name);
         $controller = "chain_gang\\Controllers\\".$name;
         return new $controller;
