@@ -34,10 +34,10 @@ class Bicycle extends \chain_gang\Core\Model
     public function setWeight_kg($weight_lbs) {
         $this->weight = floatval($weight_lbs/2.2046226218);
     }
-    public function stringCondition() {
+    public function getStringCondition() {
         return self::CONDITION[$this->condition_id] ?? 'Unknown';
     }
-    public function stringGender() {
+    public function getStringGender() {
         return self::GENDERS[$this->gender] ?? 'Unknown';
     }
     public function setBicycle($args = []) {
@@ -49,7 +49,7 @@ class Bicycle extends \chain_gang\Core\Model
         $this->setGender($args['gender']);
         $this->setColor($args['color']);
         $this->setPrice($args['price']);
-        $this->setWeight($args['weight_type'], $args['weight_type']);
+        $this->setWeight($args['weight'], $args['weight_type']);
         $this->setCondition_id($args['condition_id']);
     }
     public function getBicycle() {
@@ -74,13 +74,21 @@ class Bicycle extends \chain_gang\Core\Model
             'model' => $this->getModel(), 
             'year' => $this->getYear(), 
             'category' => $this->getCategory(), 
-            'gender' => $this->stringGender(), 
+            'gender' => $this->getStringGender(), 
             'color' => $this->getColor(),
             'price' => number_format($this->getPrice(),2,'.', ',').'$', 
             'weight' => number_format($this->getWeight_lbs(),2,'.', ',').' lbs/'.number_format($this->getWeight(),2,'.', ',').' kg',
-            'condition_id' => $this->stringCondition()
+            'condition_id' => $this->getStringCondition()
         ];
         return $args;
+    }
+
+    public function getPriceShow(){
+        return number_format($this->price,2,'.', ',').'$';
+    }
+
+    public function getWeightShow(){
+        return number_format($this->getWeight_lbs(),2,'.', ',').' lbs/'.number_format($this->weight,2,'.', ',').' kg';
     }
     
 

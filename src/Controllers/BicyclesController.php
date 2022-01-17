@@ -5,10 +5,13 @@ use chain_gang\Models\BicycleResponsitory;
 use chain_gang\Models\Bicycle;
 class BicyclesController extends Controller
 {
+    private $bicycleResponsitory;
+    public function __construct() {
+        $this->bicycleResponsitory = new BicycleResponsitory;
+    }
     function index()
     {
-        $Bicycles = new BicycleResponsitory;
-        $this->set($Bicycles->getAll());
+        $this->set($this->bicycleResponsitory->getAll());
         $this->render("index");
     }
 
@@ -31,9 +34,8 @@ class BicyclesController extends Controller
             ];
             $bicycle = new Bicycle;
             $bicycle->setBicycle($args);
-            $Bicycles = new BicycleResponsitory();
             
-            if ($Bicycles->add($bicycle)) {
+            if ($this->bicycleResponsitory->add($bicycle)) {
                 header("Location: " . WEBROOT);
             }
         }
@@ -46,8 +48,7 @@ class BicyclesController extends Controller
     function edit($id)
     {
         
-        $Bicycles = new BicycleResponsitory;
-        $this->set($Bicycles->get($id));
+        $this->set($this->bicycleResponsitory->get($id));
         $this->render("edit");
         if (isset($_POST["brand"]))
         {
@@ -66,9 +67,8 @@ class BicyclesController extends Controller
             ];
             $bicycle = new Bicycle;
             $bicycle->setBicycle($args);
-            $Bicycles = new BicycleResponsitory();
 
-            if ($Bicycles->edit($bicycle))
+            if ($this->bicycleResponsitory->edit($bicycle))
             {
                 header("Location: " . WEBROOT);
             }
@@ -77,10 +77,8 @@ class BicyclesController extends Controller
     }
 
     function delete($id)
-    {
-        $Bicycles = new BicycleResponsitory;
-        
-        if ($Bicycles->delete($id))
+    {   
+        if ($this->bicycleResponsitory->delete($id))
         {
             header("Location: " . WEBROOT);
         }

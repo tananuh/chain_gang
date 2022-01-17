@@ -7,6 +7,5 @@ class BicycleResourceModel extends ResourceModel
     public function __construct(){
         $this->__init("Bicycle", "id", new Bicycle);
     }
-
 }
 ?>

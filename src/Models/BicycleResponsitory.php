@@ -3,39 +3,33 @@ namespace chain_gang\Models;
 use chain_gang\Models\BicycleResourceModel;
 class BicycleResponsitory
 {
+    private $bicycleResourceModel;
+    public function __construct() {
+        $this->bicycleResourceModel = new BicycleResourceModel;
+    }
+
     function getAll()
     {
-        $Model = new BicycleResourceModel;
-        $d = $Model->getall();
-        $s = [];
-        foreach($d as $key=>$value) {
-            $s[$key] = $d[$key]->getBicycleShow();
-        }
-        $a['show'] = $s;
-        return $a;
+        $d['show'] = $this->bicycleResourceModel->getall();
+        return $d;
     }
     function get($id) {
-        $Model = new BicycleResourceModel;
-        $d = $Model->get($id);
-        $a['show'] = $d->getProperties();
-        return $a;
+        $d['show'] = $this->bicycleResourceModel->get($id);
+        return $d;
     }
     function add($model)
     {            
-        $Model = new BicycleResourceModel();
-        return $Model->save($model);       
+        return $this->bicycleResourceModel->save($model);       
     }
 
     function edit($model)
     {
-        $Model = new BicycleResourceModel();
-        return $Model->save($model);
+        return $this->bicycleResourceModel->save($model);
     }
 
     function delete($id)
     {
-        $Model = new BicycleResourceModel();
-        return $Model->delete($id);
+        return $this->bicycleResourceModel->delete($id);
     }
 }
 ?>
