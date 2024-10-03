@@ -1,3 +1,11 @@
-RewriteEngine on
-RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png)$ [NC]
-RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1
+# Turn rewriting on
+Options +FollowSymLinks
+RewriteEngine On
+# Redirect requests to index.php
+RewriteCond %{REQUEST_URI} !=/index.php
+RewriteCond %{REQUEST_URI} !.*\.png$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.jpg$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.css$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.gif$ [NC]
+RewriteCond %{REQUEST_URI} !.*\.js$ [NC]
+RewriteRule .* /index.php

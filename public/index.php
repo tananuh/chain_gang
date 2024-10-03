@@ -1,6 +1,6 @@
 <?php
 
-define('WEBROOT', str_replace("public/index.php", "", $_SERVER["SCRIPT_NAME"]));
+define('WEBROOT', '/index.php');
 define('ROOT', str_replace("public/index.php", "", $_SERVER["SCRIPT_FILENAME"]));
 require ('../vendor/autoload.php');
 // require(ROOT . 'Config/core.php');

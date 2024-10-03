@@ -16,7 +16,7 @@ namespace chain_gang\Core;
             extract($this->vars);
             
             ob_start();
-            require(ROOT . "src/Views/" . ucfirst(str_replace('Controller', '', str_replace('chain_gang\Controllers\\', '', get_class($this)))) . '/' . $filename . '.php');
+            require(ROOT . "src/Views/" . ucfirst(str_replace('Controller', '', str_replace('chain_gang\Controllers\\', '', get_class($this)))) . '/' . $filename . '.phtml');
             $content_for_layout = ob_get_clean();
             
             if ($this->layout == false)
@@ -25,7 +25,7 @@ namespace chain_gang\Core;
             }
             else
             {
-                require(ROOT . "src/Views/Layouts/" . $this->layout . '.php');
+                require(ROOT . "src/Views/Layouts/" . $this->layout . '.phtml');
             }
         }
 

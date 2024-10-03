@@ -9,11 +9,11 @@ class BicyclesController extends Controller
     public function __construct() {
         $this->bicycleResponsitory = new BicycleResponsitory;
     }
-    function index()
+    function view()
     {
         $d['show'] = $this->bicycleResponsitory->getAll();
         $this->set($d);
-        $this->render("index");
+        $this->render("view");
     }
 
     function create()
